@@ -1,0 +1,258 @@
+/* =============================================================
+   HOME PAGE STYLES  (home.html)
+   Uses brand-tokens.css and site.css, loaded before this file.
+   ============================================================= */
+
+
+/* ---------- 1. Hero ----------
+   Full-width photo with a dark navy layer on top so the white
+   text stays readable. If images/hero.jpg is missing, the navy
+   gradient shows instead, so the page still looks finished. */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - 68px);
+  min-height: calc(100svh - 68px);
+  padding: var(--space-16) 0;
+  color: var(--color-white);
+  text-align: center;
+  background-color: var(--color-navy);
+  background-image:
+    linear-gradient(180deg, rgba(20, 46, 74, 0.70) 0%, rgba(20, 46, 74, 0.85) 100%),
+    radial-gradient(ellipse 70% 55% at 50% 30%, rgba(201, 168, 76, 0.22), transparent 70%),
+    url('../images/hero.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content {
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
+.hero .eyebrow {
+  color: var(--color-gold);
+}
+
+.hero h1 {
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-white);
+  margin-bottom: var(--space-6);
+}
+
+.hero h1 em {
+  font-style: italic;
+  font-weight: var(--weight-regular);
+  color: var(--color-gold);
+}
+
+.hero-sub {
+  font-size: var(--text-lg);
+  color: rgba(255, 255, 255, 0.86);
+  max-width: 38rem;
+  margin: 0 auto var(--space-8);
+}
+
+/* On phones the two buttons stack full-width. */
+.hero-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 22rem;
+  margin: 0 auto;
+}
+
+
+/* ---------- 2. What The Invitation Is (three columns) ---------- */
+.pillars {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.pillar {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8) var(--space-6);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Numbered gold circle at the top of each card. */
+.pillar-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: var(--color-gold-tint);
+  color: var(--color-gold-deep);
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  margin-bottom: var(--space-4);
+}
+
+.pillar h3 {
+  margin-bottom: var(--space-3);
+}
+
+.pillar p {
+  color: var(--color-text-light);
+}
+
+
+/* ---------- 3. Featured voices ---------- */
+.voices-section {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.voices {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-8) var(--space-4);
+  list-style: none;
+}
+
+.voice {
+  text-align: center;
+}
+
+/* Circle with initials. Replace with a photo once Jeff
+   confirms image permission (see the note in home.html). */
+.voice-photo {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto var(--space-4);
+  border-radius: var(--radius-full);
+  background: var(--color-navy);
+  color: var(--color-gold);
+  border: 3px solid var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-semibold);
+  overflow: hidden;
+}
+
+.voice-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.voice h3 {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-1);
+}
+
+.voice p {
+  font-size: var(--text-sm);
+  color: var(--color-text-light);
+  line-height: 1.45;
+}
+
+
+/* ---------- 4. Statistics strip ---------- */
+.stats {
+  background: var(--color-gold-tint);
+  padding: var(--space-12) 0;
+}
+
+.stats-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-8) var(--space-4);
+  list-style: none;
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  line-height: 1.1;
+  margin-bottom: var(--space-2);
+}
+
+.stat-label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text);
+}
+
+
+/* ---------- 5. Donor call to action (navy) ---------- */
+.cta {
+  text-align: center;
+  background-image: radial-gradient(ellipse 60% 80% at 50% 100%, rgba(201, 168, 76, 0.18), transparent 70%);
+}
+
+.cta-inner {
+  max-width: var(--container-narrow);
+  margin: 0 auto;
+}
+
+.cta h2 {
+  margin-bottom: var(--space-4);
+}
+
+.cta p {
+  font-size: var(--text-lg);
+  color: rgba(255, 255, 255, 0.84);
+  margin-bottom: var(--space-8);
+}
+
+.cta-note {
+  margin-top: var(--space-6);
+  margin-bottom: 0;
+  font-size: var(--text-sm) !important;
+}
+
+.cta-note a {
+  color: var(--color-gold);
+}
+
+.cta-note a:hover {
+  color: var(--color-gold-light);
+}
+
+
+/* ---------- 6. Tablets and up ---------- */
+@media (min-width: 640px) {
+  .hero-buttons {
+    flex-direction: row;
+    justify-content: center;
+    max-width: none;
+  }
+
+  .voices {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .pillars {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .stats-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+
+/* ---------- 7. Desktop ---------- */
+@media (min-width: 1024px) {
+  .voices {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

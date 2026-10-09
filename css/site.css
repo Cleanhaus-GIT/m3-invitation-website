@@ -1,0 +1,471 @@
+/* =============================================================
+   SITE STYLES — shared by every full page of the M3 website
+   (navigation bar, footer, buttons, section layout).
+   Page-specific styles live in their own files, like home.css.
+   Load order in each page: brand-tokens.css, then site.css,
+   then the page's own CSS file.
+   ============================================================= */
+
+
+/* ---------- 1. Basic reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Leaves room for the sticky nav when jumping to a section */
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-text);
+  background: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--color-link);
+}
+
+a:hover {
+  color: var(--color-link-hover);
+}
+
+/* Hides text visually but keeps it for screen readers. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+
+/* ---------- 2. Layout helpers ---------- */
+
+/* Keeps content centered and away from the screen edges. */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* Standard vertical spacing for each page section. */
+.section {
+  padding: var(--space-16) 0;
+}
+
+/* Centered heading block at the top of a section. */
+.section-header {
+  max-width: var(--container-narrow);
+  margin: 0 auto var(--space-12);
+  text-align: center;
+}
+
+/* Small gold uppercase label above a heading.
+   Uses deep gold so it is readable on light backgrounds. */
+.eyebrow {
+  display: inline-block;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-gold-deep);
+  margin-bottom: var(--space-3);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  line-height: var(--leading-tight);
+  color: var(--color-navy);
+}
+
+h2 {
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-bold);
+}
+
+h3 {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+}
+
+.section-header p:not(.eyebrow) {
+  margin-top: var(--space-4);
+  font-size: var(--text-lg);
+  color: var(--color-text-light);
+}
+
+/* Navy sections: flip text to white and gold. */
+.on-navy {
+  background: var(--color-navy);
+  color: var(--color-on-navy);
+}
+
+.on-navy h2,
+.on-navy h3 {
+  color: var(--color-on-navy);
+}
+
+.on-navy .eyebrow {
+  color: var(--color-gold);
+}
+
+
+/* ---------- 3. Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 var(--space-6);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  border: 2px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--color-blue);
+  outline-offset: 3px;
+}
+
+/* Gold: main actions like Give Now. Navy text for readability. */
+.btn-gold,
+.btn-gold:hover {
+  color: var(--color-button-text);
+}
+
+.btn-gold {
+  background: var(--color-button);
+}
+
+.btn-gold:hover {
+  background: var(--color-button-hover);
+}
+
+/* White outline: secondary action on dark backgrounds. */
+.btn-outline-light {
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.85);
+  background: transparent;
+}
+
+.btn-outline-light:hover {
+  color: var(--color-navy);
+  background: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.btn-sm {
+  min-height: 40px;
+  padding: 0 var(--space-4);
+  font-size: var(--text-sm);
+}
+
+
+/* ---------- 4. Navigation bar ----------
+   Sticks to the top of the screen while scrolling. */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-navy);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: 68px;
+}
+
+/* Logo (text version until the dove is approved). */
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--color-white);
+  line-height: 1.15;
+}
+
+.nav-logo:hover {
+  color: var(--color-white);
+}
+
+.nav-logo img {
+  height: 44px;
+  width: auto;
+}
+
+.nav-logo-name {
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  font-weight: var(--weight-semibold);
+}
+
+.nav-logo-sub {
+  font-size: 0.6875rem;
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+/* Menu links: hidden on phones until the menu button is tapped. */
+.nav-links {
+  display: none;
+  list-style: none;
+}
+
+.nav-links a {
+  display: block;
+  color: rgba(255, 255, 255, 0.88);
+  text-decoration: none;
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  padding: var(--space-3) 0;
+  transition: color var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
+  color: var(--color-gold);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* The "hamburger" menu button for phones. */
+.nav-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 0;
+  color: var(--color-white);
+  cursor: pointer;
+}
+
+.nav-toggle svg {
+  width: 26px;
+  height: 26px;
+}
+
+.nav-toggle .icon-close { display: none; }
+.nav-toggle[aria-expanded="true"] .icon-open { display: none; }
+.nav-toggle[aria-expanded="true"] .icon-close { display: block; }
+
+/* When the phone menu is open, links drop down below the bar. */
+.site-nav.is-open .nav-links {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--color-navy);
+  padding: var(--space-2) var(--container-padding) var(--space-6);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-lg);
+}
+
+.site-nav.is-open .nav-links li + li {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+/* ---------- 5. Footer ---------- */
+.site-footer {
+  background: #142E4A;   /* a touch darker than navy */
+  color: rgba(255, 255, 255, 0.78);
+  padding: var(--space-12) 0 var(--space-8);
+  font-size: var(--text-sm);
+}
+
+.footer-grid {
+  display: grid;
+  gap: var(--space-8);
+  text-align: center;
+  justify-items: center;
+}
+
+.footer-brand .nav-logo {
+  align-items: center;
+  margin-bottom: var(--space-3);
+}
+
+.footer-brand p {
+  max-width: 22rem;
+}
+
+.footer-contact a {
+  color: var(--color-gold);
+  font-weight: var(--weight-medium);
+  word-break: break-word;
+}
+
+.footer-contact a:hover {
+  color: var(--color-gold-light);
+}
+
+.social {
+  display: flex;
+  gap: var(--space-3);
+  list-style: none;
+  margin-top: var(--space-4);
+  justify-content: center;
+}
+
+/* 44px circles: Apple's recommended tap size. */
+.social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--color-white);
+  transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.social a:hover,
+.social a:focus-visible {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-navy);
+  outline: none;
+}
+
+.social svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.footer-bottom {
+  margin-top: var(--space-12);
+  padding-top: var(--space-6);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  align-items: center;
+  text-align: center;
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+
+/* ---------- 6. Tablets and up ---------- */
+@media (min-width: 768px) {
+  .section {
+    padding: var(--space-24) 0;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1.4fr 1fr 1fr;
+    text-align: left;
+    justify-items: start;
+  }
+
+  .footer-brand .nav-logo {
+    align-items: flex-start;
+  }
+
+  .social {
+    justify-content: flex-start;
+  }
+
+  .footer-bottom {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+
+/* ---------- 7. Desktop navigation ----------
+   Shows the links in the middle and hides the menu button. */
+@media (min-width: 960px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav-links,
+  .site-nav.is-open .nav-links {
+    display: flex;
+    gap: var(--space-8);
+    position: static;
+    padding: 0;
+    background: none;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .site-nav.is-open .nav-links li + li {
+    border: 0;
+  }
+
+  .nav-links a {
+    font-size: var(--text-sm);
+    padding: var(--space-2) 0;
+  }
+
+  .nav-logo-name {
+    font-size: var(--text-lg);
+  }
+
+  .btn-sm {
+    min-height: 44px;
+    padding: 0 var(--space-6);
+  }
+}
+
+
+/* ---------- 8. Respect "Reduce Motion" ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+
+/* Small uppercase labels in the footer ("Contact us"). */
+.footer-label {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--space-2);
+}
