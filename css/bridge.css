@@ -1,0 +1,354 @@
+/* =============================================================
+   BRIDGE PAGE STYLES  (the coming-soon page)
+   Every color, font and size comes from brand-tokens.css,
+   which index.html loads first.
+   ============================================================= */
+
+
+/* ---------- 1. Basic reset ----------
+   Removes the browser's default spacing so the page looks the
+   same in Safari, Chrome and on iPhone. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ---------- 2. The whole page ----------
+   Deep navy background with a soft gold glow near the top. */
+body {
+  min-height: 100vh;
+  min-height: 100dvh;               /* fits the iPhone screen exactly */
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-on-navy);
+  background-color: var(--color-navy);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(201, 168, 76, 0.16), transparent 70%),
+    linear-gradient(180deg, #1A3A5C 0%, #142E4A 100%);
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* ---------- 3. Main column ----------
+   Keeps everything centered and at a comfortable reading width. */
+.bridge {
+  flex: 1;
+  width: 100%;
+  max-width: var(--container-narrow);
+  margin: 0 auto;
+  padding: var(--space-12) var(--container-padding) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+
+/* ---------- 4. Logo area ---------- */
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-12);
+  text-decoration: none;
+  color: inherit;
+}
+
+/* When the real logo image is ready, it uses this size. */
+.logo img {
+  width: 96px;
+  height: auto;
+}
+
+/* Text version of the logo (used until the dove is approved). */
+.logo-name {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.01em;
+}
+
+.logo-sub {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+
+/* ---------- 5. Headline area ---------- */
+
+/* "Something Extraordinary Is Coming" */
+.headline {
+  font-family: var(--font-heading);
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-6);
+}
+
+/* The word "Extraordinary" in gold italics. */
+.headline em {
+  font-style: italic;
+  font-weight: var(--weight-regular);
+  color: var(--color-gold);
+}
+
+/* Thin gold line under the headline. */
+.divider {
+  width: 56px;
+  height: 2px;
+  border: 0;
+  background: var(--color-gold);
+  margin: 0 auto var(--space-6);
+}
+
+/* The one-sentence description. */
+.description {
+  font-size: var(--text-lg);
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 34rem;
+  margin-bottom: var(--space-12);
+}
+
+
+/* ---------- 6. Email sign-up card ---------- */
+.signup {
+  width: 100%;
+  max-width: 34rem;
+  padding: var(--space-8) var(--space-6);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-8);
+}
+
+.signup-note {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-6);
+}
+
+/* On phones the field and button stack. On wider screens they
+   sit side by side (see section 9). */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* Hides the "Email address" label visually but keeps it for
+   screen readers used by blind visitors. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Hidden spam trap. Real people never see it; bots fill it in
+   and Netlify throws those submissions away. */
+.bot-field {
+  display: none;
+}
+
+.signup-input {
+  width: 100%;
+  min-height: 52px;
+  padding: 0 var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--text-base);  /* 16px stops iPhone from zooming in */
+  color: var(--color-text);
+  background: var(--color-white);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition);
+}
+
+.signup-input::placeholder {
+  color: var(--color-text-light);
+}
+
+.signup-input:focus {
+  outline: none;
+  border-color: var(--color-gold);
+}
+
+/* The gold button. Navy text, because white on gold is hard to read. */
+.btn-gold {
+  min-height: 52px;
+  padding: 0 var(--space-6);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  color: var(--color-button-text);
+  background: var(--color-button);
+  border: 0;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+.btn-gold:hover {
+  background: var(--color-button-hover);
+}
+
+.btn-gold:active {
+  transform: translateY(1px);
+}
+
+.btn-gold:focus-visible {
+  outline: 3px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+.btn-gold:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+/* Message shown after someone signs up (or if something fails). */
+.form-message {
+  font-size: var(--text-base);
+  margin-top: var(--space-4);
+}
+
+/* Takes up no space until there is a message to show. */
+.form-message:empty {
+  display: none;
+}
+
+.form-message.is-success {
+  color: var(--color-gold-light);
+  font-weight: var(--weight-medium);
+}
+
+.form-message.is-error {
+  color: #F2B8B5;
+}
+
+
+/* ---------- 7. Contact line ---------- */
+.contact {
+  font-size: var(--text-base);
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.contact a {
+  color: var(--color-gold);
+  font-weight: var(--weight-medium);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  word-break: break-word;        /* long email wraps on small phones */
+  transition: color var(--transition);
+}
+
+.contact a:hover {
+  color: var(--color-gold-light);
+}
+
+
+/* ---------- 8. Footer ---------- */
+.footer {
+  width: 100%;
+  padding: var(--space-8) var(--container-padding);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+.social {
+  display: flex;
+  gap: var(--space-3);
+  list-style: none;
+}
+
+/* Each icon is a 44px circle: the size Apple recommends for
+   anything you tap with a finger. */
+.social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--color-white);
+  transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.social a:hover,
+.social a:focus-visible {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-navy);
+  outline: none;
+}
+
+.social svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.legal {
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.02em;
+}
+
+
+/* ---------- 9. Bigger screens (tablets and computers) ---------- */
+@media (min-width: 600px) {
+  .bridge {
+    padding-top: var(--space-16);
+  }
+
+  .signup {
+    padding: var(--space-8);
+  }
+
+  /* Field and button side by side. */
+  .signup-form {
+    flex-direction: row;
+  }
+
+  .signup-input {
+    flex: 1;
+  }
+}
+
+
+/* ---------- 10. Gentle fade-in when the page loads ----------
+   Turned off for people who have "Reduce Motion" on. */
+@media (prefers-reduced-motion: no-preference) {
+  .bridge > * {
+    animation: rise 0.7s ease both;
+  }
+  .bridge > *:nth-child(2) { animation-delay: 0.08s; }
+  .bridge > *:nth-child(3) { animation-delay: 0.16s; }
+  .bridge > *:nth-child(4) { animation-delay: 0.24s; }
+  .bridge > *:nth-child(5) { animation-delay: 0.32s; }
+  .bridge > *:nth-child(6) { animation-delay: 0.40s; }
+  .bridge > *:nth-child(7) { animation-delay: 0.48s; }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: none; }
+  }
+}
