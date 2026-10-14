@@ -256,3 +256,12 @@
     grid-template-columns: repeat(5, 1fr);
   }
 }
+
+/* On phones (two per row), center the fifth person on the last row. */
+@media (max-width: 639px) {
+  .voice:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    max-width: 50%;
+  }
+}
